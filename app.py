@@ -35,7 +35,7 @@ def register():
     # form = NewAccount(request.POST)
     if form.validate_on_submit():
         firstname = form.firstname.data
-        othername = form.username.data
+        othername = form.othername.data
         lastname = form.lastname.data
         email = form.email.data
         password = form.password.data
@@ -46,6 +46,7 @@ def register():
         if check == False:
             customer = {
                 "firstname" : firstname,
+                "othername" : othername,
                 "lastname" : lastname,
                 "email" : email,
                 "password" : password,
