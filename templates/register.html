@@ -27,29 +27,44 @@
                                   <hr>
                                   <div class="row">
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="First Name" type="text" name="#">
+                                          <!-- <input class="contactus" placeholder="First Name" type="text" name="#"> -->
+                                          {{ form.firstname.label }}
+                                          {{ form.firstname(class="contactus) }}                  
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Other Name(s)" type="text" name="#">
-                                      </div>
-
-                                      <div class="col-md-6">
-                                          <input class="contactus" placeholder="Last Name" type="text" name="#">
+                                          <!-- <input class="contactus" placeholder="Other Name(s)" type="text" name="#"> -->
+                                          {{ form.othername.label }}
+                                          {{ form.othername(class="contactus) }}                 
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Email" type="email" name="#">
+                                          <!-- <input class="contactus" placeholder="Last Name" type="text" name="#"> -->
+                                          {{ form.lastname.label }}
+                                          {{ form.lastname(class="contactus) }}                  
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Password" type="password" name="#">
+                                          <!-- <input class="contactus" placeholder="Email" type="email" name="#"> -->
+                                          {{ form.email.label }}
+                                          {{ form.email(class="contactus) }}                    
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Confirm Password" type="password" name="#">
+                                          <!-- <input class="contactus" placeholder="Password" type="password" name="#"> -->
+                                          {{ form.password.label }}
+                                          {{ form.password(class="contactus) }}                   
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Home Address" type="text" name="#">
+                                          <!-- <input class="contactus" placeholder="Confirm Password" type="password" name="#"> -->
+                                          {{ form.confirm_password.label }}
+                                          {{ form.confirm_password(class="contactus) }}                   
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Phone Number" type="number" name="#">
+                                          <!-- <input class="contactus" placeholder="Home Address" type="text" name="#"> -->
+                                          {{ form.address.label }}
+                                          {{ form.address(class="contactus) }}                   
+                                      </div>
+                                      <div class="col-md-6">
+                                          <!-- <input class="contactus" placeholder="Phone Number" type="number" name="#"> -->
+                                          {{ form.phone_number.label }}
+                                          {{ form.phone_number(class="contactus) }}                  
                                       </div>
                                   </div>
                                   <!--  -->
