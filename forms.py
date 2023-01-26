@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError
+from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 from models import Customer
@@ -7,9 +7,9 @@ from models import Customer
 class NewAccount(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired(), Length(30)])
 
+    othername = StringField('Other Name(s)', validators=[Length(30)])
+
     lastname = StringField('Last Name', validators=[DataRequired(), Length(30)])
-    
-    username = StringField('Username', validators=[DataRequired(), Length(20)])
 
     email = StringField('Email Address', validators=[DataRequired(), Length(35), Email()])
     
@@ -37,3 +37,28 @@ class CustomerLogin(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(20)])
     
     password = PasswordField('Password', validators=[DataRequired()])
+
+# class Balance(FlaskForm):
+#     confirm_pin = StringField('PIN', validators=[DataRequired])
+
+# class Deposit(FlaskForm):
+#     acc_number = StringField('Account Number', validators=[DataRequired()])
+#     amount = StringField('Amount', validators=[DataRequired()])
+#     pin = StringField('PIN', validators=[DataRequired])
+
+# class Withdrawal(FlaskForm):
+#     acc_number = StringField('Account Number', validators=[DataRequired()])
+#     amount = StringField('Amount', validators=[DataRequired()])
+#     pin = StringField('PIN', validators=[DataRequired])
+
+# class Transfer(FlaskForm):
+#     acc_number = StringField('Account Number', validators=[DataRequired()])
+#     target_account = StringField('Target Account', validators=[DataRequired()])
+#     amount = StringField('Amount', validators=[DataRequired()])
+#     pin = StringField('PIN', validators=[DataRequired])
+
+# class Statement(FlaskForm):
+#     acc_number = StringField('Account Number', validators=[DataRequired()])
+#     start_date = DateField('Start Date', validators=[DataRequired])
+#     start_date = DateField('Start Date', validators=[DataRequired])
+#     pin = StringField('PIN', validators=[DataRequired])
