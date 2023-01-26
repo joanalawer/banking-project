@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Account</title> 
+{% endblock %}
+
+{% block navbar %} 
+
+{% endblock%}
+
+{% block body %} 
+<!-- start form section -->
+<div id="top_section" class=" banner_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 about_border">
+              <div class="titlepage text_align_center">
+                <h2>New Account</h2>
+              </div>
+                <div class="col-md-6 offset-md-3">
+                  <form action="#" method="POST">
+                    <div class="form-group">
+                        <!-- <label for="firstname">First Name:</label> -->
+                        {{ form.firstname.label }}
+                        {{ form.firstname(class="form-control") }}
+                        <!-- <input type="text" class="form-control" id="firstname"> -->
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="lastname">Last Name:</label> -->
+                        {{ form.lastname.label }}
+                        {{ form.lastname(class="form-control") }}
+                        <!-- <input type="text" class="form-control" id="lastname"> -->
+                    </div>
+                    <div class="form-group">
+                      <!-- <label for="username">Username:</label> -->
+                      {{ form.username.label }}
+                      {{ form.username(class="form-control") }}
+                      <!-- <input type="text" class="form-control" id="lastname"> -->
+                  </div>  
+                    <div class="form-group">
+                      <!-- <label for="email">Email Address:</label> -->
+                      {{ form.email.label }}                      
+                      {{ form.email(class="form-control") }}
+                      <!-- <input type="email" class="form-control" id="email"> -->
+                    </div>
+                    <div class="form-group">
+                      <!-- <label for="password">Password:</label> -->
+                      {{ form.password.label}}                      
+                      {{ form.password(class="form-control") }}
+                      <!-- <input type="password" class="form-control" id="password"> -->
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="confirm_password">Confirm Password:</label> -->
+                        {{ form.confirm_password.label }}                        
+                        {{ form.confirm_password(class="form-control") }}
+                        <!-- <input type="password" class="form-control" id="confirm_password"> -->
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="address">Address:</label> -->
+                        {{ form.address.label }}                        
+                        {{ form.address(class="form-control") }}
+                        <!-- <input type="text" class="form-control" id="email"> -->
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="phone_number">Phone Number:</label> -->
+                        {{ form.phone_number.label }}                        
+                        {{ form.phone_number(class="form-control") }}
+                        <!-- <input type="number" class="form-control" id="phone"> -->
+                    </div>
+                    <!-- <div class="checkbox">
+                      <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                    </div> -->
+                    <button type="submit" class="btn btn-outline-secondary"></a>
+                        Submit</button>
+                  </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end form section -->
+
+<!-- footer -->
+<footer>
+    <div class="footer">
+        <!-- <div class="copyright text_align_center ">
+           <div class="container ">
+              <div class="row ">
+                 <div class="col-md-12 ">
+                    <p>© 2023 All Rights Reserved. <a href="https://html.design/ "> Peripheral Bank</a></p>
+                 </div>
+              </div>
+           </div>
+        </div> -->
+     </div>
+  </div>
+</footer>
+  <!-- end footer -->
+{% endblock %}
