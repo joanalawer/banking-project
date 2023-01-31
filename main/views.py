@@ -103,13 +103,7 @@ def register_user():
 @blueprint.route('/login-user', methods=["GET", "POST"])
 def login_user():
     customer_login = request.form
-    username = customer_login.get('username', "")
+    acc_number = customer_login.get('acc_number', "")
     password = customer_login.get('password', "")
-
-    validate_login = validate_user_loign(username, password)# Check if password matches
-        if Customer.query.filter_by(username=field.data).first():
-            raise ValidationError('Username already in use.')
-
-
 
 # You must implement flash messages in the front end

@@ -26,7 +26,7 @@ class NewAccount(FlaskForm):
             raise ValidationError('Username already in use.')
 
 class CustomerLogin(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(20)])
+    acc_number = StringField('Username', validators=[DataRequired(), Length(20)])
     password = PasswordField('Password', validators=[DataRequired()])
     # remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
