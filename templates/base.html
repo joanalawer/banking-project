@@ -13,15 +13,17 @@
 </head>
 <body class="main-layout">
   <!-- loader  -->
-  <div class="loader_bg">
-    <div class="loader"><img src="images/loading.gif" alt="" /></div>
+  <!--
+   <div class="loader_bg">
+    <div class="loader"><img src="static/images/loading.gif" alt="" /></div>
 </div>
+-->
 <!-- end loader -->
 
 <!-- Navbar -->
     <!-- Image and text --> 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{{ url_for('index')}}">
+      <a class="navbar-brand" href="{{ url_for('bankers.index')}}">
         <img src="#" width="30" height="30" class="d-inline-block align-top" alt="">PeriBank
       </a>
       <!-- Menu section -->
@@ -31,7 +33,7 @@
       <div class="navbar-header collapse navbar-collapse" id="navbarNav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+            <a class="nav-link" href="{{ url_for('bankers.index')}}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact Us</a>
@@ -41,10 +43,10 @@
       <div class="justify-content-end navbar-header collapse navbar-collapse" id="navbarNav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('profile')}}">Profile</a>
+            <a class="nav-link" href="{{ url_for('bankers.profile')}}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login')}}">Logout </a>
+            <a class="nav-link" href="{{ url_for('bankers.login')}}">Logout </a>
           </li>
         </ul>
       </div>
@@ -57,7 +59,7 @@
       <div class="container">
           <div class="row">
               <div class="col-md-12">
-                  <a class="logo_bottom" href="{{ url_for('index')}}">PeriBANK</a>
+                  <a class="logo_bottom" href="{{ url_for('bankers.index')}}">PeriBANK</a>
               </div>
               <div class="col-sm-6">
             <div class="Informa conta ">
