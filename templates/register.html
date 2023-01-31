@@ -21,50 +21,40 @@
                                   <h2>New Account</h2>
                               </div>
                           </div>
-                          <div class=" col-md-10 offset-md-1">
-                              <form id="request" class="main_form" method="post" action="/register">
+                          <div class="col-md-10 offset-md-1">
+                            {% if error %}
+                            <div class="alert alert-danger" role="alert">
+                                <p class="text-danger text-center"> {{error}} </p>
+                            </div>
+                            {% endif %}
+                              <form class="main_form" method="post" action="{{ url_for('bankers.register_user') }}" >
                                   <h2>Personal Details</h2>
                                   <hr>
                                   <div class="row">
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="First Name" type="text" name="#">
-                                          <!-- {{ form.firstname.label }}
-                                          {{ form.firstname(class="contactus) }}                   -->
+                                          <input class="contactus" placeholder="First Name" type="text" name="firstname">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Other Name(s)" type="text" name="#">
-                                          <!-- {{ form.othername.label }}
-                                          {{ form.othername(class="contactus) }}                  -->
+                                          <input class="contactus" placeholder="Other Name(s)" type="text" name="othername">
+                                      </div>
+
+                                      <div class="col-md-6">
+                                          <input class="contactus" placeholder="Last Name" type="text" name="lastname">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Last Name" type="text" name="#">
-                                          <!-- {{ form.lastname.label }}
-                                          {{ form.lastname(class="contactus) }}                   -->
+                                          <input class="contactus" placeholder="Email" type="email" name="email">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Email" type="email" name="#">
-                                          <!-- {{ form.email.label }}
-                                          {{ form.email(class="contactus) }}                     -->
+                                          <input class="contactus" placeholder="Password" type="password" name="password">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Password" type="password" name="#">
-                                          <!-- {{ form.password.label }}
-                                          {{ form.password(class="contactus) }}                    -->
+                                          <input class="contactus" placeholder="Confirm Password" type="password" name="confirmPassword">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Confirm Password" type="password" name="#">
-                                          <!-- {{ form.confirm_password.label }}
-                                          {{ form.confirm_password(class="contactus) }}                    -->
+                                          <input class="contactus" placeholder="Home Address" type="text" name="address">
                                       </div>
                                       <div class="col-md-6">
-                                          <input class="contactus" placeholder="Home Address" type="text" name="#">
-                                          <!-- {{ form.address.label }}
-                                          {{ form.address(class="contactus) }}                    -->
-                                      </div>
-                                      <div class="col-md-6">
-                                          <input class="contactus" placeholder="Phone Number" type="number" name="#">
-                                          <!-- {{ form.phone_number.label }}
-                                          {{ form.phone_number(class="contactus) }}                   -->
+                                          <input class="contactus" placeholder="Phone Number" minlength="10" maxlength="13" type="number" name="phone">
                                       </div>
                                   </div>
                                   <!--  -->
@@ -73,19 +63,19 @@
                                   <div class="row">
                                       <div class="col-md-4 form-check">
                                           <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                                            <input type="checkbox" class="form-check-input" name="cashBank" id="" value="Cash Bank">
                                             Cash Bank
                                           </label>
                                       </div>
                                       <div class="col-md-4 form-check">
                                           <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                                              <input type="checkbox" class="form-check-input" name="digitalBank" id="" value="Digital Bank">
                                               Digital Bank
                                             </label>
                                       </div>
                                       <div class="col-md-4 form-check">
                                           <label class="form-check-label">
-                                              <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                                              <input type="checkbox" class="form-check-input" name="cryptoBank" id="" value="Crypto Bank">
                                               Crypto Bank
                                             </label>
                                       </div>
@@ -93,10 +83,10 @@
                                   <hr>
                                   <div class="row">
                                       <div class="col-md-6">
-                                          <button class="send_btn">Submit</button>
+                                          <input class="send_btn" type="submit" value="Submit">
                                       </div>
                                       <div class="col-md-6">
-                                          <button class="send_btn">Cancel</button>
+                                          <button class="send_btn" onclick="window.location.href='{{ url_for('bankers.index')}}'">Cancel</button>
                                       </div>
                                   </div>
                               </form>

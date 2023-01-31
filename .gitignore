@@ -5,3 +5,10 @@ app/__pycache__/__init__.cpython-310.pyc
 instance/
 .env
 test_customers.sqlite3
+/venv
+customers.sqlite3
+dev_db.sqlite3
+.gitignore
+config.py
+__init__.py
+/main/__init__.py
