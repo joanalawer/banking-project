@@ -26,10 +26,15 @@ class NewAccount(FlaskForm):
             raise ValidationError('Username already in use.')
 
 class CustomerLogin(FlaskForm):
-    acc_number = StringField('Username', validators=[DataRequired(), Length(20)])
+    username = StringField('Username', validators=[DataRequired(), Length(20)])
     password = PasswordField('Password', validators=[DataRequired()])
     # remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
+
+    def validate_username(self, field):
+        user = Customer.query.filter_by(username=field.data).first()
+        if user is None:
+            raise ValidationError('Invalid username')
 
 
 # class Balance(FlaskForm):
