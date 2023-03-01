@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-
 from models import Customer
 
 class NewAccount(FlaskForm):
