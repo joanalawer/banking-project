@@ -73,7 +73,7 @@ def register_user():
         return render_template('register.html', error= "Customer already exists!")    
     # Get user detaills in dict format and save i to db
     user_data = {
-            "acc_number" : acc_number,
+            "username" : username,
             "password" : password,
             "is_active": False
                 }
