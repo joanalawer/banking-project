@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_login import LoginManager, login_required,login_user, logout_user, current_user
-from main import blueprint
+from main import blueprint, forms
 from main.banker import *
 
 @blueprint.route('/')
@@ -106,11 +106,11 @@ def login_user():
         return redirect(url_for('user'))
 
     customer_login = request.form
-    acc_number = customer_login.get('acc_number', "")
+    username = customer_login.get('username', "")
     password = customer_login.get('password', "")
     
-    if validate_on_submit():
-        user = Users.query.filter_by(acc_number=acc_number.data).first()
+    if forms.validate_on_submit():
+        username = Users.query.filter_by(username=username.data).first()
         if user and user.check_password(password=password.data):
             login_user(user)
             next_page = request.args.get('next')
