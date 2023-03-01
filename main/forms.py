@@ -27,14 +27,19 @@ class NewAccount(FlaskForm):
 
 class CustomerLogin(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(20)])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8, message='Password must be at least 8 characters long')])
     # remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
 
     def validate_username(self, field):
-        user = Customer.query.filter_by(username=field.data).first()
-        if user is None:
+        username = Customer.query.filter_by(username=field.data).first()
+        if username is None:
             raise ValidationError('Invalid username')
+
+    def validate_password(self, field):
+        password = Customer.query.filter_by(password=field.data).first()
+        if password is None:
+            raise ValidationError('Invalid password')
 
 
 # class Balance(FlaskForm):
