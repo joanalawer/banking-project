@@ -14,7 +14,7 @@ class NewAccount(FlaskForm):
     phone_number = StringField('Phone Number', validators=[DataRequired()])
     submit = SubmitField('Register')
 
-    print(firstname, lastname, email, password, confirm_password, address, phone_number)
+    print(firstname, othername, lastname, email, password, confirm_password, address, phone_number)
     
     def validate_email(self, field):
         if Customer.query.filter_by(email=field.data).first():
