@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-from models import Customer
+from main.models import Customer
 
 class NewAccount(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired(), Length(30)])
