@@ -7,8 +7,9 @@ from sqlalchemy import DateTime
 class Users(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
-    acc_number = db.Column(db.Integer, unique=True, index=True)
+    username = db.Column(db.String(128))
     password = db.Column(db.String(128))
+    acc_number = db.Column(db.Integer, unique=True, index=True)
     is_active = db.Column(db.Boolean)
     last_login = db.Column(DateTime, default=datetime.datetime.now )
 
