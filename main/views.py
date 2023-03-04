@@ -114,9 +114,9 @@ def login_user():
         if user and user.check_password(password=password.data):
             login_user(user)
             next_page = request.args.get('next')
-            return redirect(next_page or url_for('main_bp.dashboard'))
+            return redirect(next_page or url_for('bankers.login'))
         flash('Invalid username/password combination')
-        return redirect(url_for('auth_bp.login'))
+        return redirect(url_for('user'))
 
 # @blueprint.route('/login-user', methods=["POST"])
 # def login_user():
