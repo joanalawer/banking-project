@@ -100,7 +100,6 @@ def register_user():
     flash(save_customer_response)
     return redirect(url_for('bankers.login'))
            
-
 @blueprint.route('/login-user', methods=["POST"])
 def login_user():
     if current_user.is_authenticated:
@@ -118,5 +117,23 @@ def login_user():
             return redirect(next_page or url_for('main_bp.dashboard'))
         flash('Invalid username/password combination')
         return redirect(url_for('auth_bp.login'))
+
+# @blueprint.route('/login-user', methods=["POST"])
+# def login_user():
+#     if current_user.is_authenticated:
+#         return redirect(url_for('user'))
+
+#     customer_login = request.form
+#     username = customer_login.get('username', "")
+#     password = customer_login.get('password', "")
+    
+#     if forms.validate_on_submit():
+#         username = Users.query.filter_by(username=username.data).first()
+#         if user and user.check_password(password=password.data):
+#             login_user(user)
+#             next_page = request.args.get('next')
+#             return redirect(next_page or url_for('main_bp.dashboard'))
+#         flash('Invalid username/password combination')
+#         return redirect(url_for('auth_bp.login'))
 
 # You must implement flash messages in the front end
