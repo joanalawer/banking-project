@@ -75,6 +75,7 @@ def register_user():
     user_data = {
             "username" : username,
             "password" : password,
+            "acc_number" : acc_number,
             "is_active": False
                 }
     get_user_id_response = save_user_data_to_database(user_data)
