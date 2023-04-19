@@ -30,19 +30,25 @@ class CustomerLogin(FlaskForm):
     # remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
 
+    # def validate_username(self, field):
+    #     username = Customer.query.filter_by(username=field.data).first()
+    #     if username is None:
+    #         raise ValidationError('Invalid username')
+
+    # def validate_password(self, field):
+    #     password = Customer.query.filter_by(password=field.data).first()
+    #     if password is None:
+    #         raise ValidationError('Invalid password')
+
     def validate_on_submit(self):
-        return super().validate_on_submit()
+        if not super(CustomerLogin, self).validate_on_submit():
+            return False
+        
+        user = Customer.query.filter_by(username=self.username.data).first()
+        if not user or not user.check_password(self.password.data):
+            raise ValidationError('Invalid username or password')
 
-    def validate_username(self, field):
-        username = Customer.query.filter_by(username=field.data).first()
-        if username is None:
-            raise ValidationError('Invalid username')
-
-    def validate_password(self, field):
-        password = Customer.query.filter_by(password=field.data).first()
-        if password is None:
-            raise ValidationError('Invalid password')
-
+        return True
 
 # class Balance(FlaskForm):
 #     confirm_pin = StringField('PIN', validators=[DataRequired])

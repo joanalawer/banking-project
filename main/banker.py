@@ -13,7 +13,7 @@ def check_if_customer_exist(email):
         return f"Could not check. Got this error: {e}"
 
 def create_account_number():
-    # TODO: You can generate your random uniquic account number from here and return it
+    # TODO: You can generate your random unique account number from here and return it
     account_number_length = 12
     range_start = 10**(account_number_length-1)
     range_end = (10**account_number_length)-1
