@@ -25,7 +25,7 @@
                             <div class="titlepage text_align_left">
                               <h2>Customer Login</h2>
                           </div>
-                              <form action="/user.html" method="post" action="{{ url_for('bankers.login_user') }}">
+                              <form method="post" action="{{ url_for('bankers.login_user') }}">
                                   <div class="form-group">
                                       <label for="username">Username:</label>
                                       <input type="text" class="form-control" id="username">
@@ -39,7 +39,7 @@
                                     <a class="col-lg-6" href="forgot_pwd.html">Forgot Password?</a>
                                   </div>
                                   <br>
-                                 <button type="submit" href="user.html" class="btn btn-outline-secondary">Login</button>
+                                 <button type="submit" class="btn btn-outline-secondary" value="Login">Login</button>
                                 </form>
                           </div>
                       </div>

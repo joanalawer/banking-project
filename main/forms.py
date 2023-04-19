@@ -30,6 +30,9 @@ class CustomerLogin(FlaskForm):
     # remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
 
+    def validate_on_submit(self):
+        return super().validate_on_submit()
+
     def validate_username(self, field):
         username = Customer.query.filter_by(username=field.data).first()
         if username is None:
