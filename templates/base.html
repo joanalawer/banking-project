@@ -46,7 +46,7 @@
             <a class="nav-link" href="{{ url_for('bankers.profile')}}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('bankers.login')}}">Logout </a>
+            <a class="nav-link" href="{{ url_for('bankers.index')}}">Logout </a>
           </li>
         </ul>
       </div>
@@ -91,7 +91,7 @@
          <div class="container ">
             <div class="row ">
                <div class="col-md-12 ">
-                  <p>© 2023 All Rights Reserved.  <a href="https://html.design/ "> Peripheral Bank</a></p>
+                  <p>© 2023 All Rights Reserved.  <a href="{{ url_for('bankers.index')}}"> Peripheral Bank</a></p>
                </div>
             </div>
          </div>
