@@ -72,7 +72,7 @@ def register_user():
     if customer_exist == "User already available":
         flash("Customer already exists!")
         return render_template('register.html', error= "Customer already exists!")    
-    # Get user detaills in dict format and save i to db
+    # Get user details in dict format and save it to database
     user_data = {
             "username" : username,
             "password" : password,
