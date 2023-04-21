@@ -43,3 +43,5 @@ def check_if_password_matches(password, confirmPassword):
     if password != confirmPassword:
         return False
     return True
+
+# Implement check for empty field on the registration form
