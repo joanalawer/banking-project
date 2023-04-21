@@ -122,8 +122,8 @@ def login_user():
     # flash('Invalid username/password combination')
     # return redirect(url_for('bankers.login'))
 
+# You must implement flash messages for login
 @blueprint.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
-# You must implement flash messages in the front end

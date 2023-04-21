@@ -19,10 +19,14 @@ class NewAccount(FlaskForm):
     def validate_email(self, field):
         if Customer.query.filter_by(email=field.data).first():
             raise ValidationError('Email already registered.')
-    
-    def validate_username(self, field):
-        if Customer.query.filter_by(username=field.data).first():
-            raise ValidationError('Username already in use.')
+        
+# The validate_username method is a custom validation method for the username field, which is not defined in the form. 
+# It checks if the username entered by the user already exists in the Customer database table. 
+# If it does, it raises a ValidationError with the message "Username already in use".
+
+    # def validate_username(self, field):
+    #     if Customer.query.filter_by(username=field.data).first():
+    #         raise ValidationError('Username already in use.')
 
 class CustomerLogin(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(20)])
