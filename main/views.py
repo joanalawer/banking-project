@@ -17,10 +17,10 @@ def login():
 def register():
     return render_template('register.html')
 
-@blueprint.route('/user')
+@blueprint.route('/user_page')
 @login_required
 def user():
-    return render_template('user.html')
+    return render_template('user_page.html')
 
 @blueprint.route('/profile')
 @login_required
@@ -115,13 +115,12 @@ def login_user():
         user = Users.query.filter_by(form.username.data).first()
         if user is not None and user.check_password(form.password.data):
             login_user(user, form.remember_me.data) 
-            next_page = request.args.get('user')
-            return redirect(next_page or url_for('main_bp.dashboard'))
+            # next_page = request.args.get('user')
+            return redirect(request.args.get('next') or url_for('user_page'))
         flash('Invalid username/password combination')
         return redirect(url_for('bankers.login'))
-    return render_template('user.html')
+    return render_template('login.html')
 
-# You must implement flash messages for login
 @blueprint.route('/logout')
 def logout():
     logout_user()
