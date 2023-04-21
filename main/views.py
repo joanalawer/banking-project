@@ -104,7 +104,7 @@ def register_user():
 @blueprint.route('/login-user', methods=["POST"])
 def login_user():
     if current_user.is_authenticated:
-        return redirect(url_for('user'))
+        return redirect(url_for('user_page'))
 
     customer_login = request.form
     username = customer_login.get('username', "")
@@ -113,9 +113,11 @@ def login_user():
     form = CustomerLogin()
     if form.validate_on_submit():
         user = Users.query.filter_by(form.username.data).first()
-        if user is not None and user.check_password(form.password.data):
+        if user and user.check_password(form.password.data):
             login_user(user, form.remember_me.data) 
-            # next_page = request.args.get('user')
+            # the user is redirected to either the page they were trying 
+            # to access before they were asked to login 
+            # (stored in the next query parameter) 
             return redirect(request.args.get('next') or url_for('user_page'))
         flash('Invalid username/password combination')
         return redirect(url_for('bankers.login'))
