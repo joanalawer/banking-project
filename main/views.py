@@ -72,6 +72,7 @@ def register_user():
     if customer_exist == "User already available":
         flash("Customer already exists!")
         return render_template('register.html', error= "Customer already exists!")    
+    
     # Get user details in dict format and save it to database
     user_data = {
             "username" : username,
@@ -110,11 +111,18 @@ def login_user():
     username = customer_login.get('username', "")
     password = customer_login.get('password', "")
     
+    # Cgeck if username exists & if login details match
     check_username_password = check_if_username_matches_password(username, password)
+    if "error" in check_username_password:
+        flash(check_username_password)
+        return render_template('login.html', error=check_username_password)
+    if check_username_password == "Username does not exist":
+        flash("There's no account with username!")
+        return render_template('login.html', error="There's no account with the username!")
     if check_username_password is False:
         flash("Invalid username and password combination.")
         return render_template('login.html', error="Invalid username and password combination.")
-    
+
     form = CustomerLogin()
     if form.validate_on_submit():
         user = Users.query.filter_by(username=username.data).first()
