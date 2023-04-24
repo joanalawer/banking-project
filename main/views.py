@@ -110,10 +110,15 @@ def login_user():
     username = customer_login.get('username', "")
     password = customer_login.get('password', "")
     
+    check_username_password = check_is_username_matches_password(username, password)
+    if check_username_password is False:
+        flash("Invalid username and password combination.")
+        return render_template('login.html', error="Invalid username and password combination.")
+    
     form = CustomerLogin()
     if form.validate_on_submit():
-        user = Users.query.filter_by(form.username.data).first()
-        if user and user.check_password(form.password.data):
+        user = Users.query.filter_by(username=username.data).first()
+        if user and user.check_password(password=password.data):
             login_user(user, form.remember_me.data) 
             # the user is redirected to either the page they were trying 
             # to access before they were asked to login 

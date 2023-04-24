@@ -44,4 +44,13 @@ def check_if_password_matches(password, confirmPassword):
         return False
     return True
 
+# Function to check if username exists and matches password for login
+def check_is_username_matches_password(username, password):
+    user = db.session.query(Users).filter(Users.username==username).first()
+    if not user:
+        return "Username does not exist"
+    if user.password != password:
+        return "Invalid username or password combination"
+    return True
+
 # Implement check for empty field on the registration form
