@@ -110,7 +110,7 @@ def login_user():
     username = customer_login.get('username', "")
     password = customer_login.get('password', "")
     
-    check_username_password = check_is_username_matches_password(username, password)
+    check_username_password = check_if_username_matches_password(username, password)
     if check_username_password is False:
         flash("Invalid username and password combination.")
         return render_template('login.html', error="Invalid username and password combination.")
@@ -126,7 +126,7 @@ def login_user():
             return redirect(request.args.get('next') or url_for('user_page'))
         flash('Invalid username/password combination')
         return redirect(url_for('bankers.login'))
-    return render_template('login.html')
+    return render_template('user_page.html')
 
 @blueprint.route('/logout')
 def logout():
