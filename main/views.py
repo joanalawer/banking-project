@@ -119,6 +119,7 @@ def login_user():
     if check_username_password is False:
         flash("Invalid username and password combination.")
         return render_template('login.html', error="Invalid username and password combination.")
+    return render_template('user_page.html')
 
     form = CustomerLogin()
     if form.validate_on_submit():
