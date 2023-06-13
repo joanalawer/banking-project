@@ -114,23 +114,23 @@ def login_user():
         password = customer_login.get('password', "")
 
         user = Users.query.filter_by(username=username.data).first()
-    # Check if username exists & if login details match
+        # Check if username exists & if login details match
         check_username_password = check_if_username_matches_password(username, password)
+        
         if check_username_password == "Username does not exist":
             flash("There's no account with the username!")
             return render_template('login.html', error="There's no account with the username!")
+        
         if check_username_password is False:
             flash("Invalid username and password combination.")
             return render_template('login.html', error="Invalid username and password combination.")
   
-        if user and user.check_password(password=password.data):
-            login_user(user, form.remember_me.data) 
-            # the user is redirected to either the page they were trying 
-            # to access before they were asked to login 
-            # (stored in the next query parameter) 
-            return redirect(request.args.get('next') or url_for('user_page'))
-        flash('Invalid username/password combination')
-        return redirect(url_for('bankers.login'))
+        # if user and user.check_password(password=password.data):
+        login_user(user, form.remember_me.data) 
+        return redirect(request.args.get('next') or url_for('user_page'))
+        # flash('Invalid username/password combination')
+        # return redirect(url_for('bankers.login'))
+    
     return render_template('user_page.html')
 
 @blueprint.route('/logout')
