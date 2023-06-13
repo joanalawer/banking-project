@@ -102,27 +102,27 @@ def register_user():
     flash(save_customer_response)
     return redirect(url_for('bankers.login'))
            
-@blueprint.route('/login-user', methods=["POST"])
+@blueprint.route('/login-user', methods=["GET", "POST"])
 def login_user():
     if current_user.is_authenticated:
         return redirect(url_for('user_page'))
-
-    customer_login = request.form
-    username = customer_login.get('username', "")
-    password = customer_login.get('password', "")
     
-    # Check if username exists & if login details match
-    check_username_password = check_if_username_matches_password(username, password)
-    if check_username_password == "Username does not exist":
-        flash("There's no account with the username!")
-        return render_template('login.html', error="There's no account with the username!")
-    if check_username_password is False:
-        flash("Invalid username and password combination.")
-        return render_template('login.html', error="Invalid username and password combination.")
-
     form = CustomerLogin()
     if form.validate_on_submit():
+        customer_login = request.form
+        username = customer_login.get('username', "")
+        password = customer_login.get('password', "")
+
         user = Users.query.filter_by(username=username.data).first()
+    # Check if username exists & if login details match
+        check_username_password = check_if_username_matches_password(username, password)
+        if check_username_password == "Username does not exist":
+            flash("There's no account with the username!")
+            return render_template('login.html', error="There's no account with the username!")
+        if check_username_password is False:
+            flash("Invalid username and password combination.")
+            return render_template('login.html', error="Invalid username and password combination.")
+  
         if user and user.check_password(password=password.data):
             login_user(user, form.remember_me.data) 
             # the user is redirected to either the page they were trying 
