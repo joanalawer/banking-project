@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-from main.models import Customer
+from main.models import Customer, Users
 
 class NewAccount(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired(), Length(30)])
@@ -48,7 +48,7 @@ class CustomerLogin(FlaskForm):
         if not super(CustomerLogin, self).validate_on_submit():
             return False
         
-        user = Customer.query.filter_by(username=self.username.data).first()
+        user = Users.query.filter_by(username=self.username.data).first()
         if not user or not user.check_password(self.password.data):
             raise ValidationError('Invalid username or password')
 

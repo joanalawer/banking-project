@@ -109,29 +109,31 @@ def login_user():
     
     form = CustomerLogin()
     if form.validate_on_submit():
-        customer_login = request.form
-        username = customer_login.get('username', "")
-        password = customer_login.get('password', "")
+        username = form.username.data
+        password = form.password.data
 
-        user = Users.query.filter_by(username=username.data).first()
-        # Check if username exists & if login details match
-        check_username_password = check_if_username_matches_password(username, password)
-        
-        if check_username_password == "Username does not exist":
+        if not username:
+            flash("Username field is empty.")
+            return redirect(url_for('login_user'))
+
+        if not password:
+            flash("Password field is empty.")
+            return redirect(url_for('login_user'))
+
+        user = Users.query.filter_by(username=username).first()
+        if not user:
             flash("There's no account with the username!")
-            return render_template('login.html', error="There's no account with the username!")
-        
-        if check_username_password is False:
+            return redirect(url_for('login_user'))
+
+        if not user.check_password(password):
             flash("Invalid username and password combination.")
-            return render_template('login.html', error="Invalid username and password combination.")
-  
-        # if user and user.check_password(password=password.data):
-        login_user(user, form.remember_me.data) 
-        return redirect(request.args.get('next') or url_for('user_page'))
-        # flash('Invalid username/password combination')
-        # return redirect(url_for('bankers.login'))
+            return redirect(url_for('login_user'))
+
+        login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        return redirect(next_page or url_for('user_page'))
     
-    return render_template('user_page.html')
+    return render_template('login.html', form=form)
 
 @blueprint.route('/logout')
 def logout():
