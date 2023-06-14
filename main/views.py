@@ -102,28 +102,21 @@ def register_user():
     flash(save_customer_response)
     return redirect(url_for('bankers.login'))
            
-@blueprint.route('/login-user', methods=["GET", "POST"])
+@blueprint.route('/login_user', methods=["GET", "POST"])
 def login_user():
     if current_user.is_authenticated:
         return redirect(url_for('user_page'))
     
     form = CustomerLogin()
     if form.validate_on_submit():
-        username = form.username.data
-        password = form.password.data
+        customer_login = request.form
+        username = customer_login.get('username', "")
+        password = customer_login.get('password', "")
 
-        if not username:
-            flash("Username field is empty.")
-            return redirect(url_for('login_user'))
-
-        if not password:
-            flash("Password field is empty.")
-            return redirect(url_for('login_user'))
-
-        user = Users.query.filter_by(username=username).first()
+        user = Users.query.filter_by(username=username.data).first()
         if not user:
             flash("There's no account with the username!")
-            return redirect(url_for('login_user'))
+            return redirect(url_for('login_user'), error="There's no account with the username!")
 
         if not user.check_password(password):
             flash("Invalid username and password combination.")

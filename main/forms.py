@@ -34,15 +34,15 @@ class CustomerLogin(FlaskForm):
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Login')
 
-    # def validate_username(self, field):
-    #     username = Customer.query.filter_by(username=field.data).first()
-    #     if username is None:
-    #         raise ValidationError('Invalid username')
+    def validate_username(self, field):
+        username = Customer.query.filter_by(username=field.data).first()
+        if username is None:
+            raise ValidationError('Invalid username')
 
-    # def validate_password(self, field):
-    #     password = Customer.query.filter_by(password=field.data).first()
-    #     if password is None:
-    #         raise ValidationError('Invalid password')
+    def validate_password(self, field):
+        password = Customer.query.filter_by(password=field.data).first()
+        if password is None:
+            raise ValidationError('Invalid password')
 
     def validate_on_submit(self):
         if not super(CustomerLogin, self).validate_on_submit():
