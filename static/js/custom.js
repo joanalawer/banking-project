@@ -113,15 +113,18 @@ function closeNav() {
      -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 function redirectToCashPage() {
     // Redirect to cash page
-    window.location.href = "cash_bank.html";
+    // window.location.href = "cash_bank.html";
+	window.location.href ="{{ url_for('bankers.crypto')}}";
 }
 
 function redirectToDigitalPage() {
 	// Redirect to digital page
-	window.location.href = "digital.html";
+	// window.location.href = "digital.html";
+	window.location.href ="{{ url_for('bankers.crypto')}}";
 }
 
 function redirectToCryptoPage() {
 	// Redirect to crypto page
-	window.location.href = "crypto.html";
+	// window.location.href = "crypto.html"
+	window.location.href ="{{ url_for('bankers.crypto')}}";
 }

@@ -98,7 +98,7 @@ def register_user():
     save_customer_response = save_customer_data_to_database(customer_data)
     if "error" in save_customer_response:
         flash(save_customer_response)
-        return render_template('register.html', error= save_customer_response)
+        return render_template('register.html', error=save_customer_response)
     flash(save_customer_response)
     return redirect(url_for('bankers.login'))
            
