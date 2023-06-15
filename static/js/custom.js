@@ -111,3 +111,17 @@ function closeNav() {
 
 /* Redirect To Bank Type
      -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+function redirectToCashPage() {
+    // Redirect to cash page
+    window.location.href = "cash_bank.html";
+}
+
+function redirectToDigitalPage() {
+	// Redirect to digital page
+	window.location.href = "digital.html";
+}
+
+function redirectToCryptoPage() {
+	// Redirect to crypto page
+	window.location.href = "crypto.html";
+}
