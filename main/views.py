@@ -102,7 +102,7 @@ def register_user():
     flash(save_customer_response)
     return redirect(url_for('bankers.login'))
            
-@blueprint.route('/login_user', methods=["GET", "POST"])
+@blueprint.route('/login', methods=["GET", "POST"])
 def login_user():
     if current_user.is_authenticated:
         return redirect(url_for('user_page'))
@@ -126,7 +126,7 @@ def login_user():
         next_page = request.args.get('next')
         return redirect(next_page or url_for('user_page'))
     
-    return render_template('login.html', form=form)
+    return render_template('user_page.html', form=form)
 
 @blueprint.route('/logout')
 def logout():
