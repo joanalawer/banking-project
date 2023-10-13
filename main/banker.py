@@ -1,5 +1,5 @@
 
-from main.models import Customer, Users
+from peripheral.models import Customer, Users
 from __init__ import db
 from random import randint
 
