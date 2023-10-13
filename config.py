@@ -5,6 +5,10 @@ from decouple import config
 class Config:           
     SECRET_KEY = config('SECRET_KEY', default= os.environ.get('SECRET_KEY'))
     
+    @staticmethod
+    def init_app(peripheral):
+        pass
+
 class DevelopmentConfig(Config):
     DEBUG = True
     MAIL_SERVER = 'smtp.googlemail.com'
