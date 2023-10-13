@@ -1,7 +1,7 @@
 import os
-from flask import Flask, render_template, request, url_for, redirect, flash
-from flask_login import LoginManager, login_required,login_user, logout_user, current_user
-from main import blueprint, forms
+from flask import render_template, request, url_for, redirect, flash
+from flask_login import login_required,login_user, logout_user, current_user
+from main import blueprint
 from main.forms import CustomerLogin
 from main.banker import *
 
@@ -28,7 +28,7 @@ def profile():
     return render_template('profile.html')
 
 @blueprint.route('/cash_bank')
-@login_required
+# @login_required
 def cash_bank():
     return render_template('cash_bank.html')
 
