@@ -120,11 +120,11 @@ def login_user():
 
         if not user.check_password(password):
             flash("Invalid username and password combination.")
-            return redirect(url_for('login_user'))
+            return redirect(url_for('bankers.login_user'))
 
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
-        return redirect(next_page or url_for('user_page'))
+        return redirect(next_page or url_for('bankers.user_page'))
     
     return render_template('user_page.html', form=form)
 
