@@ -17,10 +17,10 @@ def login():
 def register():
     return render_template('register.html')
 
-@blueprint.route('/user_page')
+@blueprint.route('/user_page/<name>')
 @login_required
-def user():
-    return render_template('user_page.html')
+def user(username):
+    return render_template('user_page.html', name=username)
 
 @blueprint.route('/profile')
 @login_required

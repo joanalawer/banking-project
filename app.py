@@ -3,7 +3,7 @@ from sys import exit
 from decouple import config
 from os import environ
 from config import config_dict
-# from __init__ import create_app, db
+from __init__ import create_app, db
 # WARNING: Don't run with debug turned on in production! ... change default = False
 DEVELOPMENT = config('development', default=True, cast=bool)
 
