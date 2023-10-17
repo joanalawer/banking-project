@@ -1,9 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))    # Returns the banking-project directory and directory of specified files
                                                         # making its content available to the flask app
-from decouple import config
 class Config:           
-    SECRET_KEY = config('SECRET_KEY', default= os.environ.get('SECRET_KEY'))
+    SECRET_KEY = os.environ.get('SECRET_KEY', default= os.environ.get('SECRET_KEY'))
     
     @staticmethod
     def init_app(peripheral):
