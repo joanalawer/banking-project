@@ -1,9 +1,8 @@
-import os
-from flask import render_template, request, url_for, redirect, flash
-from flask_login import login_required,login_user, logout_user, current_user
+from datetime import datetime
+from flask import render_template, session, url_for, redirect
+# from flask_login import login_required,login_user, logout_user, current_user
 from main import blueprint
 from main.forms import CustomerLogin
-from main.banker import *
 
 @blueprint.route('/')
 def index():
