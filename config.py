@@ -19,22 +19,20 @@ class DevelopmentConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.splite')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, os.environ.get('DEV_DATABASE_URL'))
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.splite')
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-    
+  
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, os.environ.get('TEST_DATABASE_URL'))
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
     
 class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, os.environ.get('DATABASE_URL'))
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    # SQLALCHEMY_TRACK_MODIFICATIONS = False
     
 config_dict = {
     'development': DevelopmentConfig,
