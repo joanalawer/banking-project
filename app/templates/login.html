@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title> 
+{% endblock %}
+
+{% block navbar %} 
+
+{% endblock%}
+
+{% block body %} 
+    <!-- start login form -->
+    <div id="top_section" class=" banner_main">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="row d_flex">
+                      <div class="col-md-6">
+                          <div class="con_img">
+                              <figure><img class="img_responsive" src="static/images/peribank.png" alt="#" /></figure>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="bluid">
+                            <div class="titlepage text_align_left">
+                              <h2>Customer Login</h2>
+                          </div>
+                          {% if error %}
+                          <div class="alert alert-danger" role="alert">
+                            <p class="text-danger text-center"> {{error}} </p>
+                          </div>
+                          {% endif %}
+                              <form method="post" action="{{ url_for('bankers.login_user') }}">
+                                  <div class="form-group">
+                                      <label for="username">Username:</label>
+                                      <input type="text" class="form-control" id="username">
+                                    </div>
+                                  <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd">
+                                  </div>
+                                  <div class="row checkbox">
+                                    <label class="col-lg-6 form-check-label"><input type="checkbox"> Remember me</label>
+                                    <a class="col-lg-6" href="forgot_pwd.html">Forgot Password?</a>
+                                  </div>
+                                  <br>
+                                 <button type="submit" class="btn btn-outline-secondary" value="Login">Login</button>
+                                </form>
+                          </div>
+                      </div>
+                  </div>              
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- end login form -->
+
+{% endblock %}
