@@ -4,6 +4,7 @@ from auth import auth
 from models import User
 from forms import CustomerLogin, RegistrationForm
 
+# Function to check user(email & password)) in db when login form is submitted"
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = CustomerLogin()
@@ -15,6 +16,7 @@ def login():
         flash('Invalid username or password.')
     return render_template('auth/login.html', form=form)
 
+# Function to logout user after login"
 @auth.route('/logout')
 @login_required
 def logout():
@@ -22,7 +24,7 @@ def logout():
     flash('You have been logged out.')
     return redirect(url_for('main.index'))
 
-# View function to add new user to db when registration form is submitted"
+# Function to add new user to db when registration form is submitted"
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
