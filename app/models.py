@@ -1,8 +1,8 @@
-from flask_login import UserMixin, login_required
+from flask_login import UserMixin   #, login_required
 from __init__ import login_manager, db
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Users(UserMixin, db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     username = db.Column(db.String(128), unique=True, index=True)
@@ -27,7 +27,7 @@ def __repr__(self):
         
 @login_manager.user_loader
 def load_user(user_id):
-    return Users.query.get(int(user_id))
+    return User.query.get(int(user_id))
 
 # Example usage of protecting routes that can only be used by authenticated users
 # @app.route('/secret')
