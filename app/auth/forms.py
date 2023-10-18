@@ -1,9 +1,8 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
-from app.models import Customer, Users
+from flask_wtf import Form
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired
 
-class CustomerLogin(FlaskForm):
+class CustomerLogin(Form):
     username = StringField('Username', validators=[DataRequired(), Length(20)])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=8, message='Password must be at least 8 characters long')])
     remember_me = BooleanField('Remember me')
