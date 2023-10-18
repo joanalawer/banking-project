@@ -5,14 +5,14 @@ import datetime
 from sqlalchemy import DateTime
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Users(db.Model):
+class Users(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True, autoincrement=True)
     username = db.Column(db.String(128), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    # acc_number = db.Column(db.Integer, unique=True, index=True)
-    # is_active = db.Column(db.Boolean)
-    # last_login = db.Column(DateTime, default=datetime.datetime.now )
+    email = db.Column(db.String(64), unique=True, index=True)
+    acc_number = db.Column(db.Integer, unique=True, index=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     
     @property
 	def password(self):
