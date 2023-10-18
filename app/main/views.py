@@ -17,12 +17,12 @@ def register():
     return render_template('register.html')
 
 @blueprint.route('/user_page/<name>')
-@login_required
+# @login_required
 def user(username):
     return render_template('user_page.html', name=username)
 
 @blueprint.route('/profile')
-@login_required
+# @login_required
 def profile():
     return render_template('profile.html')
 
@@ -32,12 +32,12 @@ def cash_bank():
     return render_template('cash_bank.html')
 
 @blueprint.route('/digital')
-@login_required
+# @login_required
 def digital():
     return render_template('digital.html')
 
 @blueprint.route('/crypto')
-@login_required
+# @login_required
 def crypto():
     return render_template('crypto.html')
 
