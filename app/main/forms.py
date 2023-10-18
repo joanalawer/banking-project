@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField, ValidationError, DateField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-from peripheral.models import Customer, Users
+from app.models import Customer, Users
 
 class NewAccount(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired(), Length(30)])
