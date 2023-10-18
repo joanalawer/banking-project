@@ -3,7 +3,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))    # Returns the banking-pr
                                                         # making its content available to the flask app
 class Config:           
     SECRET_KEY = os.environ.get('SECRET_KEY', default= os.environ.get('SECRET_KEY'))
-    
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+
     @staticmethod
     def init_app(peripheral):
         pass
