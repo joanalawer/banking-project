@@ -33,7 +33,7 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, os.environ.get('DATABASE_URL'))
     # SQLALCHEMY_TRACK_MODIFICATIONS = False
     
-config_dict = {
+config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'production': ProductionConfig,
